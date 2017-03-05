@@ -3,11 +3,10 @@
   <head>
     <title>Lbex</title>
     <%= csrf_meta_tags %>
-
-    <%= javascript_include_tag *webpack_asset_paths("application") %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="root"></div>
+    <%= javascript_include_tag *webpack_asset_paths("application") %>
   </body>
 </html>
