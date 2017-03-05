@@ -13,13 +13,13 @@ class CreateInventionsBitsMaterials < ActiveRecord::Migration[5.0]
     create_table :materials do |t|
       t.text :name
     end
-    create_table :inventions_bits do |t|
-      t.belongs_to :inventions, index: true
-      t.belongs_to :bits, index: true
+    create_table :bits_inventions do |t|
+      t.belongs_to :invention, index: true
+      t.belongs_to :bit, index: true
     end
     create_table :inventions_materials do |t|
-      t.belongs_to :inventions, index: true
-      t.belongs_to :materials, index: true
+      t.belongs_to :invention, index: true
+      t.belongs_to :material, index: true
     end
   end
 end

@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20170305223947) do
     t.text "name"
   end
 
+  create_table "bits_inventions", force: :cascade do |t|
+    t.integer "invention_id"
+    t.integer "bit_id"
+    t.index ["bit_id"], name: "index_bits_inventions_on_bit_id", using: :btree
+    t.index ["invention_id"], name: "index_bits_inventions_on_invention_id", using: :btree
+  end
+
   create_table "inventions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -28,18 +35,11 @@ ActiveRecord::Schema.define(version: 20170305223947) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "inventions_bits", force: :cascade do |t|
-    t.integer "inventions_id"
-    t.integer "bits_id"
-    t.index ["bits_id"], name: "index_inventions_bits_on_bits_id", using: :btree
-    t.index ["inventions_id"], name: "index_inventions_bits_on_inventions_id", using: :btree
-  end
-
   create_table "inventions_materials", force: :cascade do |t|
-    t.integer "inventions_id"
-    t.integer "materials_id"
-    t.index ["inventions_id"], name: "index_inventions_materials_on_inventions_id", using: :btree
-    t.index ["materials_id"], name: "index_inventions_materials_on_materials_id", using: :btree
+    t.integer "invention_id"
+    t.integer "material_id"
+    t.index ["invention_id"], name: "index_inventions_materials_on_invention_id", using: :btree
+    t.index ["material_id"], name: "index_inventions_materials_on_material_id", using: :btree
   end
 
   create_table "materials", force: :cascade do |t|
