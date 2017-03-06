@@ -1,0 +1,3 @@
+--colors
+--require source-map-support/register
+--require babel-polyfill

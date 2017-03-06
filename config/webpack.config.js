@@ -13,6 +13,7 @@ var production = process.env.NODE_ENV === 'production';
 
 var config = {
   entry: {
+    'babel-polyfill': 'babel-polyfill',
     // Sources are expected to live in $app_root/webpack
     'application': './webpack/application.js'
   },
