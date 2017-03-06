@@ -16,3 +16,10 @@ foreman start
 ```
 
 Navigate to [http://localhost:5000/](http://localhost:5000/).
+
+## Test
+
+```
+rspec
+npm test
+```
