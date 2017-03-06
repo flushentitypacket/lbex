@@ -1,8 +1,12 @@
 import React, { PropTypes } from 'react';
+import TagsInput from 'react-tagsinput';
+
+const COMMA_KEY_CODE = 188;
+const SPACE_KEY_CODE = 32;
 
 class Invention extends React.Component {
   static propTypes = {
-    id: PropTypes.number,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,
     username: PropTypes.string,
@@ -13,6 +17,7 @@ class Invention extends React.Component {
     materials: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
     })),
+    onChangeMaterials: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -20,8 +25,15 @@ class Invention extends React.Component {
     materials: [],
   };
 
+  handleChangeMaterials = (materialNames) => {
+    const { id, onChangeMaterials } = this.props;
+    const materials = materialNames.map(name => ({ name }));
+    onChangeMaterials(id, materials);
+  }
+
   render = () => {
     const { id, title, description, username, email, bits, materials } = this.props;
+    const materialNames = materials.map(material => material.name);
     return (
       <div>
         <p><strong>id</strong> {id}</p>
@@ -30,6 +42,14 @@ class Invention extends React.Component {
         <p><strong>username</strong> {username}</p>
         <p><strong>email</strong> {email}</p>
         <p><strong>bits</strong> {bits.map(bit => bit.name).join(', ')}</p>
+        <div><strong>materials</strong>
+          <TagsInput
+            value={materialNames}
+            onChange={this.handleChangeMaterials}
+            addKeys={[COMMA_KEY_CODE, SPACE_KEY_CODE]}
+            onlyUnique
+          />
+        </div>
       </div>
     );
   }
