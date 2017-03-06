@@ -1,14 +1,18 @@
-import React from 'react'
-import { render } from 'react-dom'
-
-class InventionsScreen extends React.Component {
-  render = () => <h1>Hello world!</h1>
-}
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import InventionsScreen from './screens/InventionsScreen';
+import store from './store';
 
 class App extends React.Component {
   render = () => (
     <InventionsScreen />
-  )
+  );
 }
 
-render(React.createElement(App), document.getElementById('root'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);

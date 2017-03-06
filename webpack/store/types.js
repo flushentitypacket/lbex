@@ -1,0 +1,1 @@
+export const ADD_INVENTION = 'ADD_INVENTION';
