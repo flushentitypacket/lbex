@@ -1,24 +1,18 @@
-# README
+# lbex
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+```
+bundle install
+npm install
+rake db:create
+rake db:setup
+```
 
-* Ruby version
+## Launch
 
-* System dependencies
+```
+foreman start
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Navigate to [http://localhost:5000/](http://localhost:5000/).
