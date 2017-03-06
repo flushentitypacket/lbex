@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import StringSeparatedTagsInput from './StringSeparatedTagsInput';
+import StringSeparatedTagsInput from '../StringSeparatedTagsInput';
 
 const COMMA_KEY_CODE = 188;
 const SPACE_KEY_CODE = 32;

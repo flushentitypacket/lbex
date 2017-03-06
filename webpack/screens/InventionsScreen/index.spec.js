@@ -1,7 +1,7 @@
 import React from 'react';
 import expect from 'expect';
 import { mount } from 'enzyme';
-import { InventionsScreen } from './InventionsScreen';
+import { InventionsScreen } from './index';
 
 const getMounted = (props) => <InventionsScreen inventions={[]} {...props} />;
 

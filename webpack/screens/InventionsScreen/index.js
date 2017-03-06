@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Collapsible from 'react-collapsible';
-import { getInventions } from '../store/selectors';
-import { fetchInventions, setInvention, updateInvention } from '../store/actions';
-import Invention from '../components/Invention';
+import { getInventions } from '../../store/selectors';
+import { fetchInventions, setInvention, updateInvention } from '../../store/actions';
+import Invention from '../../components/Invention';
 
 export class InventionsScreen extends React.Component {
   static propTypes = {
