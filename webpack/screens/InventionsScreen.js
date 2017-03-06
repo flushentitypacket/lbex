@@ -4,7 +4,7 @@ import { getInventions } from '../store/selectors';
 import { fetchInventions } from '../store/actions';
 import Invention from '../components/Invention';
 
-class InventionsScreen extends React.Component {
+export class InventionsScreen extends React.Component {
   static propTypes = {
     onMount: PropTypes.func,
     inventions: PropTypes.array.isRequired,

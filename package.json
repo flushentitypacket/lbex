@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "test": "mocha-webpack --webpack-config config/webpack.config.js \"webpack/**/*.spec.js\""
+    "test": "mocha-webpack --webpack-config config/webpack.config.test.js \"webpack/**/*.spec.js\""
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -30,8 +30,10 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "expect": "^1.20.2",
+    "jsdom": "^9.11.0",
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",
+    "react-addons-test-utils": "^15.4.2",
     "stats-webpack-plugin": "^0.4.3",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.3"
