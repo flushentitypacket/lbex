@@ -1,1 +1,2 @@
 export const ADD_INVENTION = 'ADD_INVENTION';
+export const FETCH_INVENTIONS = 'FETCH_INVENTIONS';
