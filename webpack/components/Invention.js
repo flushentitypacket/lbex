@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import TagsInput from 'react-tagsinput';
+import StringSeparatedTagsInput from './StringSeparatedTagsInput';
 
 const COMMA_KEY_CODE = 188;
 const SPACE_KEY_CODE = 32;
@@ -43,11 +43,12 @@ class Invention extends React.Component {
         <p><strong>email</strong> {email}</p>
         <p><strong>bits</strong> {bits.map(bit => bit.name).join(', ')}</p>
         <div><strong>materials</strong>
-          <TagsInput
+          <StringSeparatedTagsInput
             value={materialNames}
             onChange={this.handleChangeMaterials}
             addKeys={[COMMA_KEY_CODE, SPACE_KEY_CODE]}
             onlyUnique
+            separator={', '}
           />
         </div>
       </div>
