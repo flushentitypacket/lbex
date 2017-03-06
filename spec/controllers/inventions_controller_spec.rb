@@ -49,4 +49,24 @@ RSpec.describe InventionsController, type: :controller do
       end
     end
   end
+
+  describe 'POST #update' do
+    let(:invention) do
+      Invention.new.tap do |i|
+        i.materials.build(name: 'abceasyas123')
+      end
+    end
+    let(:new_material_name) { 'coolnewmaterial' }
+
+    it 'updates materials' do
+      invention.save!
+      post :update, {
+        id: invention.id,
+        data: {
+          materials: [{ name: new_material_name }]
+        },
+      }
+      expect(invention.reload.materials.first.name).to eq(new_material_name)
+    end
+  end
 end

@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import * as types from './types';
-import { getInventions } from '../lib/api';
+import { getInventions, updateInvention } from '../lib/api';
 
 export function* fetchInventions() {
   const inventions = yield call(getInventions);
@@ -11,8 +11,16 @@ export function* fetchInventions() {
   }));
 }
 
+export function* requestUpdateInvention(action) {
+  const { id, ...invention } = action.payload;
+  yield call(() => updateInvention({ id, invention }));
+}
+
 function* saga() {
-  yield takeLatest(types.FETCH_INVENTIONS, fetchInventions);
+  yield [
+    takeLatest(types.FETCH_INVENTIONS, fetchInventions),
+    takeLatest(types.UPDATE_INVENTION, requestUpdateInvention),
+  ];
 }
 
 export default saga;

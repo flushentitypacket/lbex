@@ -9,7 +9,12 @@ export const fetchInventions = () => ({
   type: types.FETCH_INVENTIONS,
 });
 
-export const setMaterialsForInvention = (id, materials) => ({
-  type: types.SET_MATERIALS_FOR_INVENTION,
-  payload: { id, materials },
+export const updateInvention = (invention) => ({
+  type: types.UPDATE_INVENTION,
+  payload: invention,
+});
+
+export const setInvention = (invention) => ({
+  type: types.SET_INVENTION,
+  payload: invention,
 });

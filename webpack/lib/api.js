@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.headers.common['X-CSRF-Token'] = window['csrf-token'];
 
 export const getInventions = () =>
   axios.get('/inventions', { params: { format: 'json' } })
@@ -16,3 +17,6 @@ export const getInventions = () =>
         name: materials.name,
       })),
     })));
+
+export const updateInvention = ({ id, invention }) =>
+  axios.put(`/inventions/${id}`, { data: { ...invention } });

@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getInventions } from '../store/selectors';
-import { fetchInventions, setMaterialsForInvention } from '../store/actions';
+import { fetchInventions, setInvention, updateInvention } from '../store/actions';
 import Invention from '../components/Invention';
 
 export class InventionsScreen extends React.Component {
   static propTypes = {
     onMount: PropTypes.func,
     inventions: PropTypes.array.isRequired,
-    onChangeMaterials: PropTypes.func,
+    onChangeInvention: PropTypes.func,
   };
 
   static defaultProps = {
@@ -20,7 +20,7 @@ export class InventionsScreen extends React.Component {
   };
 
   render = () => {
-    const { inventions, onChangeMaterials } = this.props;
+    const { inventions, onChangeInvention } = this.props;
     return (
       <div>
         {
@@ -28,7 +28,7 @@ export class InventionsScreen extends React.Component {
             <Invention
               {...invention}
               key={invention.id}
-              onChangeMaterials={onChangeMaterials}
+              onChange={onChangeInvention}
             />
           )
         }
@@ -43,7 +43,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onMount: () => dispatch(fetchInventions()),
-  onChangeMaterials: (id, materials) => dispatch(setMaterialsForInvention(id, materials)),
+  onChangeInvention: (invention) => {
+    dispatch(setInvention(invention));
+    dispatch(updateInvention(invention));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InventionsScreen);

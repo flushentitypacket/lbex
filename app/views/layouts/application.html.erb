@@ -3,6 +3,9 @@
   <head>
     <title>Lbex</title>
     <%= csrf_meta_tags %>
+    <script>
+      window['csrf-token'] = document.querySelector('meta[name="csrf-token"]').content;
+    </script>
   </head>
 
   <body>

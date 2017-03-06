@@ -17,7 +17,7 @@ class Invention extends React.Component {
     materials: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
     })),
-    onChangeMaterials: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -25,10 +25,14 @@ class Invention extends React.Component {
     materials: [],
   };
 
+  handleChange = (changedProps) => {
+    const { onChange, ...restProps } = this.props;
+    onChange({ ...restProps, ...changedProps });
+  }
+
   handleChangeMaterials = (materialNames) => {
-    const { id, onChangeMaterials } = this.props;
     const materials = materialNames.map(name => ({ name }));
-    onChangeMaterials(id, materials);
+    this.handleChange({ materials });
   }
 
   render = () => {

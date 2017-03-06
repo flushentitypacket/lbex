@@ -5,14 +5,11 @@ const inventions = (state = [], action) => {
   switch (action.type) {
     case types.ADD_INVENTION:
       return [...state, action.payload];
-    case types.SET_MATERIALS_FOR_INVENTION:
+    case types.SET_INVENTION:
       return state.map((invention) => {
-        const { id, materials } = action.payload;
-        if (invention.id === id) {
-          return {
-            ...invention,
-            materials,
-          };
+        const updatedInvention = action.payload;
+        if (invention.id === updatedInvention.id) {
+          return updatedInvention;
         }
         return invention;
       });
